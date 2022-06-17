@@ -1,7 +1,7 @@
 package org.linkdew.daopattern.queries;
 
 public enum UserQueries {
-    ADD("INSERT INTO users VALUES (?, ?, ?, ?) RETURNING user_id"),
+    ADD("INSERT INTO users VALUES (?, ?, ?, ?, ?) RETURNING user_id"),
     GET("SELECT * FROM users WHERE user_id = ?;"),
     GETALL("SELECT * FROM users;"),
     GETUSERNAME("SELECT * FROM users WHERE username = ?;"),

@@ -58,7 +58,7 @@ public class Main {
         System.out.println(taskDAO.findById(1L));
 
         System.out.println("User DAO Testing");
-        User user = new User(9L, "sweet1q", "fsd312da", "driver@driver.com");
+        User user = new User(9L, "chope", 3L, "sdgvsadg", "a@2");
         userDAO.create(user);
         userDAO.update(9L, "deep1q");
         userDAO.delete(9L);

@@ -13,7 +13,7 @@ import static org.linkdew.daopattern.Main.connectionPool;
 public class RoleDAO implements RoleInterface {
     private Connection connection;
     private Statement statement;
-    private static final String ID = "user_id";
+    private static final String ID = "role_id";
     private static final String ROLE = "rolename";
 
     public RoleDAO() {
@@ -27,10 +27,10 @@ public class RoleDAO implements RoleInterface {
     }
 
     private Role getRole(ResultSet resultSet) throws SQLException{
-        Long userId = resultSet.getLong(ID);
+        Long roleId = resultSet.getLong(ID);
         String rolename = resultSet.getString(ROLE);
 
-        return new Role(userId, rolename);
+        return new Role(roleId, rolename);
     }
 
     public Role findById(Long id) {
@@ -53,8 +53,8 @@ public class RoleDAO implements RoleInterface {
         try {
             ResultSet resultSet = statement.executeQuery(RoleQueries.GETALL.getQuery());
             while (resultSet.next()) {
-                Role user = getRole(resultSet);
-                roles.add(user);
+                Role role = getRole(resultSet);
+                roles.add(role);
             }
             resultSet.close();
         } catch (SQLException e) {
@@ -65,7 +65,7 @@ public class RoleDAO implements RoleInterface {
 
     public void create(Role role) {
         try (PreparedStatement statement = connection.prepareStatement(RoleQueries.ADD.getQuery())) {
-            statement.setLong(1, role.getUserId());
+            statement.setLong(1, role.getRoleId());
             statement.setString(2, role.getRolename());
             statement.executeQuery();
         } catch (SQLException e) {

@@ -3,6 +3,7 @@ package org.linkdew.daopattern.entities;
 public class User {
     private Long userId;
     private String username;
+    private Long roleId;
     private String password;
     private String email;
 
@@ -10,13 +11,15 @@ public class User {
     public String toString(){
         return "User id: " + userId.toString() +
                 "\tUsername: " + username +
+                "\tRole id: " + roleId.toString() +
                 "\tPass: " + password +
                 "\tEmail: " + email;
     }
 
-    public User(Long userId, String username, String password, String email) {
+    public User(Long userId, String username, Long roleId, String password, String email) {
         this.userId = userId;
         this.username = username;
+        this.roleId = roleId;
         this.password = password;
         this.email = email;
     }
@@ -35,6 +38,14 @@ public class User {
 
     public void setUsername(String username) {
         this.username = username;
+    }
+
+    public Long getRoleId() {
+        return roleId;
+    }
+
+    public void setRoleId(Long roleId) {
+        this.roleId = roleId;
     }
 
     public String getPassword() {

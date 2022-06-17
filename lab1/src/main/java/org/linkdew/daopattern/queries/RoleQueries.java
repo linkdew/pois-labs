@@ -2,10 +2,10 @@ package org.linkdew.daopattern.queries;
 
 public enum RoleQueries {
     ADD("INSERT INTO roles VALUES (?, ?) RETURNING rolename;"),
-    GET("SELECT * FROM roles WHERE user_id = ?;"),
+    GET("SELECT * FROM roles WHERE role_id = ?;"),
     GETALL("SELECT * FROM roles;"),
-    UPDATE("UPDATE roles SET rolename = ? WHERE user_id = ? RETURNING rolename;"),
-    DELETE("DELETE FROM roles WHERE user_id = ? RETURNING user_id;");
+    UPDATE("UPDATE roles SET rolename = ? WHERE role_id = ? RETURNING rolename;"),
+    DELETE("DELETE FROM roles WHERE role_id = ? RETURNING role_id;");
 
     final String Query;
 

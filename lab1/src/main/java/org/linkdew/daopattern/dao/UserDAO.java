@@ -15,6 +15,7 @@ public class UserDAO implements UserInterface {
     private Statement statement;
     private static final String ID = "user_id";
     private static final String USERNAME = "username";
+    private static final String ROLE = "role_id";
     private static final String PASS = "password";
     private static final String EMAIL = "email";
 
@@ -31,10 +32,11 @@ public class UserDAO implements UserInterface {
     private User getUser(ResultSet resultSet) throws SQLException{
         Long userId = resultSet.getLong(ID);
         String username = resultSet.getString(USERNAME);
+        Long roleId = resultSet.getLong(ROLE);
         String password = resultSet.getString(PASS);
         String email = resultSet.getString(EMAIL);
 
-        return new User(userId, username, password, email);
+        return new User(userId, username, roleId, password, email);
     }
 
     public User findById(Long id) {
@@ -86,8 +88,9 @@ public class UserDAO implements UserInterface {
         try (PreparedStatement statement = connection.prepareStatement(UserQueries.ADD.getQuery())) {
             statement.setLong(1, user.getUserId());
             statement.setString(2, user.getUsername());
-            statement.setString(3, user.getPassword());
-            statement.setString(4, user.getEmail());
+            statement.setLong(3, user.getRoleId());
+            statement.setString(4, user.getPassword());
+            statement.setString(5, user.getEmail());
             statement.executeQuery();
         } catch (SQLException e) {
             System.err.println("creation failed");

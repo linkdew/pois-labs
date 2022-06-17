@@ -1,26 +1,26 @@
 package org.linkdew.daopattern.entities;
 
 public class Role {
-    private Long userId;
+    private Long roleId;
     private String rolename;
 
-    public Role(Long userId, String rolename) {
-        this.userId = userId;
+    public Role(Long roleId, String rolename) {
+        this.roleId = roleId;
         this.rolename = rolename;
     }
 
     @Override
     public String toString(){
-        return "User id: " + userId.toString() +
+        return "Role id: " + roleId.toString() +
                 "\tRole: " + rolename;
     }
 
-    public Long getUserId() {
-        return userId;
+    public Long getRoleId() {
+        return roleId;
     }
 
-    public void setUserId(Long userId) {
-        this.userId = userId;
+    public void setRoleId(Long roleId) {
+        this.roleId = roleId;
     }
 
     public String getRolename() {
